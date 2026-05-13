@@ -1,0 +1,119 @@
+<div class="min-h-screen bg-black text-white">
+<app-entropy></app-entropy>
+  <!-- Header -->
+  <header class="text-center py-16 px-6">
+    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">My Journey</h1>
+    <p class="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+     A progressive educational journey focused on building strong academic foundations, technical skills, and practical problem-solving abilities, complemented by continuous self-learning.
+    </p>
+  </header>
+
+  <!-- Timeline -->
+  <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-8">
+    <div class="relative">
+
+      <!-- Vertical line -->
+      <div class="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-gray-700"></div>
+
+      <!-- Items -->
+      <div class="space-y-10 sm:space-y-14 relative">
+        @for (item of timelineItems; track item.title; let i = $index) {
+          <div
+            #timelineCard
+            class="timeline-card relative flex items-start gap-4 sm:gap-6"
+            [style.--delay]="i * 100 + 'ms'"
+          >
+
+            <!-- Avatar -->
+            <div class="relative flex-shrink-0 z-10">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-gray-800 shadow-lg bg-gray-800 flex items-center justify-center">
+                @if (item.image) {
+                  <img
+                    [src]="item.image"
+                    [alt]="item.title"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                } @else {
+                  <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke-width="1.5"/>
+                  </svg>
+                }
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div
+              class="flex-1 min-w-0 rounded-xl border bg-gray-900/60 backdrop-blur-sm p-4 sm:p-6 transition-all duration-300 hover:shadow-lg hover:shadow-black/30 group cursor-default"
+              [ngClass]="getCardBorderColor(item.status)"
+            >
+
+              <!-- Top row -->
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-base sm:text-lg font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors duration-300">
+                    {{ item.title }}
+                  </h3>
+                  <div class="flex flex-wrap items-center gap-2 text-sm text-gray-400">
+                    @if (item.category) {
+                      <span class="font-medium">{{ item.category }}</span>
+                    }
+                    @if (item.category && item.date) {
+                      <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
+                    }
+                    @if (item.date) {
+                      <time [attr.dateTime]="item.date">{{ item.date }}</time>
+                    }
+                  </div>
+                </div>
+
+                <!-- Badge -->
+                <span
+                  class="w-fit text-xs font-medium border rounded-full px-2.5 py-0.5 flex-shrink-0"
+                  [ngClass]="getBadgeClasses(item.status)"
+                >
+                  {{ getStatusLabel(item.status) }}
+                </span>
+              </div>
+
+              <!-- Description -->
+              <p class="text-sm sm:text-base text-gray-400 leading-relaxed mb-4">
+                {{ item.description }}
+              </p>
+
+              <!-- Progress bar -->
+              <div class="h-1 bg-gray-800 rounded-full overflow-hidden">
+                <div
+                  class="h-full rounded-full transition-all duration-1000 ease-out"
+                  [ngClass]="getProgressColor(item.status)"
+                  [style.width]="getProgressWidth(item.status)"
+                ></div>
+              </div>
+
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Bottom dot -->
+      <div class="absolute left-6 sm:left-8 -bottom-3 -translate-x-1/2 w-3 h-3 bg-white rounded-full shadow-sm"></div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+
+
+</div>
+
+<style>
+  .timeline-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease var(--delay, 0ms), transform 0.5s ease var(--delay, 0ms);
+  }
+  .timeline-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

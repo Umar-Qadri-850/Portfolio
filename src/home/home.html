@@ -1,0 +1,74 @@
+<div class="w-full h-screen bg-black flex items-center justify-center overflow-hidden relative isolate">
+
+  <app-entropy></app-entropy>
+
+  <!-- 🌌 CENTER CORE -->
+  <div class="absolute w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 animate-pulse z-0 shadow-2xl"></div>
+
+  <!-- 🌀 ORBIT RING -->
+  <div class="absolute w-[420px] h-[420px] rounded-full border border-white/10 z-0"></div>
+
+  <!-- 🔵 NODES -->
+  <ng-container *ngFor="let item of timelineData; let i = index">
+
+    <div
+      class="absolute cursor-pointer transition-all duration-700 z-10"
+      [ngStyle]="getPosition(i)"
+      (click)="toggle(item.id)"
+    >
+
+      <!-- 🔘 NODE -->
+      <div
+        class="relative flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300"
+        [ngClass]="{
+          'bg-white text-black scale-150 border-white': activeId === item.id,
+          'bg-black text-white border-white/40': activeId !== item.id,
+          'animate-pulse': pulse[item.id]
+        }"
+      >
+        {{ item.icon }}
+      </div>
+
+      <!-- 📌 LABEL -->
+      <div
+        class="absolute top-16 left-1/2 -translate-x-1/2 text-xs text-white/90 whitespace-nowrap"
+        [ngClass]="{ 'text-white scale-110': activeId === item.id }"
+      >
+        {{ item.title }}
+      </div>
+
+      <!-- 📦 EXPANDED CARD -->
+      <div
+        *ngIf="expanded[item.id]"
+        class="absolute top-20 left-1/2 -translate-x-1/2 w-64 bg-black/95 border border-white/20 backdrop-blur-xl rounded-xl p-4 text-white shadow-2xl z-[9999]"
+      >
+
+        <!-- TITLE -->
+        <h2 class="text-sm font-semibold mb-1">
+          {{ item.title }}
+        </h2>
+
+        <!-- DESCRIPTION -->
+        <p class="text-xs text-white/70">
+          {{ item.content }}
+        </p>
+
+        <!-- 🚀 NAVIGATE BUTTON -->
+        <div class="mt-4">
+          <button
+            class="w-full py-2 text-xs rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition"
+            (click)="goTo(item)"
+          >
+            Navigate
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </ng-container>
+
+</div>
+
+<router-outlet></router-outlet>

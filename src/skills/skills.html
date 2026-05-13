@@ -1,0 +1,142 @@
+<div class="w-full h-screen bg-black flex items-center justify-center overflow-hidden relative isolate">
+
+  <!-- ✨ STARFIELD -->
+  <app-entropy></app-entropy>
+
+  <!-- 🌌 CENTER CORE -->
+  <div
+    class="absolute w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 animate-pulse z-10 shadow-2xl flex items-center justify-center"
+  >
+    <span class="text-white text-xs font-bold tracking-[4px]">
+      SKILLS
+    </span>
+  </div>
+
+  <!-- 🌀 ORBIT RING -->
+  <div
+    class="absolute w-[480px] h-[480px] rounded-full border border-white/10 z-0"
+  ></div>
+
+  <!-- ✨ SECOND ORBIT -->
+  <div
+    class="absolute w-[620px] h-[620px] rounded-full border border-cyan-500/5 z-0"
+  ></div>
+
+  <!-- 🔵 SKILLS -->
+  <ng-container *ngFor="let item of skillsData; let i = index">
+
+    <div
+      class="absolute transition-all duration-700 z-20"
+      [ngStyle]="getPosition(i)"
+    >
+
+      <!-- NODE -->
+      <div
+        (click)="toggle(item.id)"
+        class="relative flex items-center justify-center w-12 h-12 rounded-full border-2 cursor-pointer transition-all duration-500 backdrop-blur-xl bg-black/70 hover:scale-110"
+
+        [ngClass]="{
+          'scale-150 border-white shadow-[0_0_35px_rgba(255,255,255,0.45)] bg-white': activeId === item.id,
+          'border-white/20 hover:border-white/50': activeId !== item.id
+        }"
+      >
+
+        <!-- ICON -->
+        <img
+          [src]="item.icon"
+          [alt]="item.title"
+          class="w-8 h-8 object-contain transition-all duration-300"
+          [ngClass]="{
+            'scale-110': activeId === item.id
+          }"
+        />
+
+        <!-- ACTIVE GLOW -->
+        <div
+          *ngIf="activeId === item.id"
+          class="absolute inset-0 rounded-full animate-ping bg-white/10"
+        ></div>
+
+      </div>
+
+      <!-- LABEL -->
+      <div
+        class="absolute top-16 left-1/2 -translate-x-1/2 whitespace-nowrap transition-all duration-300 text-sm"
+
+        [ngClass]="{
+          'text-white font-semibold scale-110': activeId === item.id,
+          'text-white/60': activeId !== item.id
+        }"
+      >
+        {{ item.title }}
+      </div>
+
+      <!-- EXPANDED CARD -->
+      <div
+        *ngIf="expanded[item.id]"
+        class="absolute top-24 left-1/2 -translate-x-1/2 w-64 rounded-2xl overflow-hidden border border-white/10 bg-black/90 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.7)] p-5 z-[999]"
+      >
+
+        <!-- HEADER -->
+        <div class="flex items-center gap-3 mb-4">
+
+          <div
+            class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center"
+          >
+            <img
+              [src]="item.icon"
+              [alt]="item.title"
+              class="w-7 h-7 object-contain"
+            />
+          </div>
+
+          <div>
+            <h2 class="text-white text-sm font-semibold">
+              {{ item.title }}
+            </h2>
+
+            <p class="text-xs text-white/50">
+              {{ item.level }}
+            </p>
+          </div>
+
+        </div>
+
+        <!-- SKILL BAR -->
+        <div class="mb-2">
+
+          <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+
+            <div
+              class="h-full rounded-full bg-gradient-to-r transition-all duration-700"
+              [ngClass]="item.color"
+              [ngStyle]="{
+                width: getLevelWidth(item.level)
+              }"
+            ></div>
+
+          </div>
+
+        </div>
+
+        <!-- DESCRIPTION -->
+        <p class="text-xs leading-6 text-white/60">
+          Strong experience building scalable and modern applications using
+          {{ item.title }} with {{item.level}} skills and UI systems.
+        </p>
+
+        <!-- BUTTON -->
+        <button
+          (click)="toggle(item.id); $event.stopPropagation()"
+          class="mt-5 w-full py-2 rounded-xl text-xs font-medium bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition-all duration-300"
+        >
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
+  </ng-container>
+
+</div>
