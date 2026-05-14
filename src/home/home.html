@@ -3,19 +3,20 @@
   <app-entropy></app-entropy>
 
   <!-- 🌌 CENTER CORE -->
-  <div class="absolute w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 animate-pulse z-0 shadow-2xl"></div>
+  <div class="absolute w-28 h-28 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 animate-pulse z-0 shadow-2xl"></div>
 
   <!-- 🌀 ORBIT RING -->
   <div class="absolute w-[420px] h-[420px] rounded-full border border-white/10 z-0"></div>
 
   <!-- 🔵 NODES -->
-  <ng-container *ngFor="let item of timelineData; let i = index">
+<!-- 🔵 NODES -->
+<ng-container *ngFor="let item of timelineData; let i = index">
 
-    <div
-      class="absolute cursor-pointer transition-all duration-700 z-10"
-      [ngStyle]="getPosition(i)"
-      (click)="toggle(item.id)"
-    >
+  <div
+    class="absolute cursor-pointer transition-all duration-700"
+    [ngStyle]="getNodeStyle(i, item.id)"
+    (click)="toggle(item.id)"
+  >
 
       <!-- 🔘 NODE -->
       <div
@@ -31,7 +32,7 @@
 
       <!-- 📌 LABEL -->
       <div
-        class="absolute top-16 left-1/2 -translate-x-1/2 text-xs text-white/90 whitespace-nowrap"
+        class="absolute top-16 left-1/2 -translate-x-1/2 text-md text-white/90 whitespace-nowrap"
         [ngClass]="{ 'text-white scale-110': activeId === item.id }"
       >
         {{ item.title }}
@@ -40,7 +41,8 @@
       <!-- 📦 EXPANDED CARD -->
       <div
         *ngIf="expanded[item.id]"
-        class="absolute top-20 left-1/2 -translate-x-1/2 w-64 bg-black/95 border border-white/20 backdrop-blur-xl rounded-xl p-4 text-white shadow-2xl z-[9999]"
+        class="absolute left-1/2 -translate-x-1/2 w-64 bg-black/95 border border-white/20 backdrop-blur-xl rounded-xl p-4 text-white shadow-2xl z-[9999]"
+        [ngStyle]="getCardStyle(i)"
       >
 
         <!-- TITLE -->
@@ -57,7 +59,7 @@
         <div class="mt-4">
           <button
             class="w-full py-2 text-xs rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition"
-            (click)="goTo(item)"
+            (click)="goTo(item); $event.stopPropagation()"
           >
             Navigate
           </button>

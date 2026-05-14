@@ -71,7 +71,7 @@ export class Home implements AfterViewInit, OnDestroy {
     this.lastTime = time;
 
     if (!this.paused) {
-      this.rotation += delta * 0.0080;
+      this.rotation += delta * 0.005;
       // Re-enter Angular zone only to mark the view dirty
       this.zone.run(() => this.cdr.markForCheck());
     }
@@ -82,17 +82,28 @@ export class Home implements AfterViewInit, OnDestroy {
   togglePause(): void {
     this.paused = !this.paused;
   }
+getNodeStyle(index: number, id: number): Record<string, string> {
+  const total = this.timelineData.length;
+  const baseAngle = (index / total) * 360;
+  const angle = baseAngle + this.rotation;
+  const radius = 230;
+  const rad = (angle * Math.PI) / 180;
 
-  getPosition(index: number) {
-    const total = this.timelineData.length;
-    const baseAngle = (index / total) * 360;
-    const angle = baseAngle + this.rotation;
-    const radius = 230;
-    const rad = (angle * Math.PI) / 180;
-    return {
-      transform: `translate(${radius * Math.cos(rad)}px, ${radius * Math.sin(rad)}px)`
-    };
-  }
+  return {
+    transform: `translate(${radius * Math.cos(rad)}px, ${radius * Math.sin(rad)}px)`,
+    zIndex: this.activeId === id ? '1000' : '10'
+  };
+}
+  // getPosition(index: number) {
+  //   const total = this.timelineData.length;
+  //   const baseAngle = (index / total) * 360;
+  //   const angle = baseAngle + this.rotation;
+  //   const radius = 230;
+  //   const rad = (angle * Math.PI) / 180;
+  //   return {
+  //     transform: `translate(${radius * Math.cos(rad)}px, ${radius * Math.sin(rad)}px)`
+  //   };
+  // }
 
   // toggle(id: number): void {
   //   this.expanded = {};
@@ -141,4 +152,19 @@ export class Home implements AfterViewInit, OnDestroy {
     const active = this.timelineData.find(i => i.id === this.activeId);
     return active?.relatedIds.includes(id) ?? false;
   }
+
+  getCardStyle(index: number): Record<string, string> {
+  const total = this.timelineData.length;
+  const baseAngle = (index / total) * 360;
+  const angle = baseAngle + this.rotation;
+  const rad = (angle * Math.PI) / 180;
+  const y = Math.sin(rad); // -1 (top) to +1 (bottom)
+
+  // If node is in the lower half of the orbit, open card upward
+  if (y > 0) {
+    return { bottom: '4.5rem', top: 'auto' };
+  } else {
+    return { top: '4.5rem', bottom: 'auto' };
+  }
+}
 }
