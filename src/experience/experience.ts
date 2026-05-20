@@ -28,7 +28,7 @@ export class Experience {
     {
       title: 'Frontend Intern',
       company: 'Akvateq',
-      duration: '6 Months',
+      duration: '8 Months',
       description:
         'Hands-on experience in Angular 20, developing dynamic and responsive user interfaces, integrating APIs, and applying best practices in frontend architecture.',
       icon: 'trending-up',
