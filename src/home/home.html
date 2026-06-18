@@ -2,21 +2,29 @@
 
   <app-entropy></app-entropy>
 
-  <!-- 🌌 CENTER CORE -->
-  <div class="absolute w-28 h-28 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 animate-pulse z-0 shadow-2xl"></div>
+  <!-- ⚛️ 3D QUANTUM CORE -->
+  <canvas #quantumCanvas
+    class="absolute z-0"
+    style="width: 250px; height: 250px;">
+  </canvas>
 
-  <!-- 🌀 ORBIT RING -->
+  <!-- 🌀 MAIN ORBIT RING -->
   <div class="absolute w-[420px] h-[420px] rounded-full border border-white/10 z-0"></div>
 
-  <!-- 🔵 NODES -->
-<!-- 🔵 NODES -->
-<ng-container *ngFor="let item of timelineData; let i = index">
+  <!-- ➖ HORIZONTAL ORBIT (flat equatorial ring) -->
+  <div class="absolute w-[420px] h-[14px] rounded-[50%] border border-white/15 z-0"></div>
 
-  <div
-    class="absolute cursor-pointer transition-all duration-700"
-    [ngStyle]="getNodeStyle(i, item.id)"
-    (click)="toggle(item.id)"
-  >
+  <!-- | VERTICAL ORBIT (tall polar ring) -->
+  <div class="absolute w-[14px] h-[420px] rounded-[50%] border border-white/15 z-0"></div>
+
+  <!-- 🔵 NODES -->
+  <ng-container *ngFor="let item of timelineData; let i = index">
+
+    <div
+      class="absolute cursor-pointer transition-all duration-700"
+      [ngStyle]="getNodeStyle(i, item.id)"
+      (click)="toggle(item.id)"
+    >
 
       <!-- 🔘 NODE -->
       <div
@@ -44,18 +52,8 @@
         class="absolute left-1/2 -translate-x-1/2 w-64 bg-black/95 border border-white/20 backdrop-blur-xl rounded-xl p-4 text-white shadow-2xl z-[9999]"
         [ngStyle]="getCardStyle(i)"
       >
-
-        <!-- TITLE -->
-        <h2 class="text-sm font-semibold mb-1">
-          {{ item.title }}
-        </h2>
-
-        <!-- DESCRIPTION -->
-        <p class="text-xs text-white/70">
-          {{ item.content }}
-        </p>
-
-        <!-- 🚀 NAVIGATE BUTTON -->
+        <h2 class="text-sm font-semibold mb-1">{{ item.title }}</h2>
+        <p class="text-xs text-white/70">{{ item.content }}</p>
         <div class="mt-4">
           <button
             class="w-full py-2 text-xs rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition"
@@ -64,7 +62,6 @@
             Navigate
           </button>
         </div>
-
       </div>
 
     </div>

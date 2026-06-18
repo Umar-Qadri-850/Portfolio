@@ -10,7 +10,10 @@ import * as THREE from 'three';
 
 @Component({
   selector: 'app-entropy',
-  template: `<canvas #canvas></canvas>`,
+  template: `
+    <canvas #canvas></canvas>
+    <div class="vignette"></div>
+  `,
   styles: [`
     canvas {
       position: fixed;
@@ -20,6 +23,18 @@ import * as THREE from 'three';
       z-index: 0;
       display: block;
       pointer-events: none;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.08) 0%,
+        rgba(0, 0, 0, 0.50) 100%
+      );
     }
   `]
 })
@@ -66,7 +81,6 @@ export class Entropy implements AfterViewInit, OnDestroy {
     this.renderer.setSize(width, height);
     this.renderer.setPixelRatio(window.devicePixelRatio);
 
-    // Particles
     const geometry = new THREE.BufferGeometry();
     const count = 5000;
     const positions = new Float32Array(count * 3);
@@ -121,7 +135,6 @@ export class Entropy implements AfterViewInit, OnDestroy {
 
     window.removeEventListener('resize', this.onResize);
 
-    // cleanup three.js
     this.particles?.geometry.dispose();
     (this.particles?.material as THREE.Material)?.dispose();
     this.renderer?.dispose();
