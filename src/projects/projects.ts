@@ -30,6 +30,13 @@ export class Projects {
       link: 'https://github.com/Umar-Qadri-850/Talkgenie-Clone',
     },
     {
+      icon: '🕸️',
+      title: 'Linkedin Scrapper',
+      category: 'Python',
+      description: 'Real-time text extractor based on keyword',
+      link: 'https://github.com/Umar-Qadri-850/Linkedin-Scrapper',
+    },
+    {
       icon: '📷',
       title: 'Google Meet Clone ',
       category: 'WebRtc',
@@ -50,13 +57,7 @@ export class Projects {
       description: 'Assingment or task tracking app',
       link: 'https://github.com/Umar-Qadri-850/assignment_tracker-via-flutter',
     },
-    {
-      icon: '🔐',
-      title: 'Password Strength Checker',
-      category: 'Angular',
-      description: 'Real-time password validation tool',
-      link: 'https://github.com/Umar-Qadri-850/Coffee',
-    },
+    
     {
       icon: '☕',
       title: 'Coffie Website',

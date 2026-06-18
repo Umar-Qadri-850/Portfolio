@@ -46,6 +46,22 @@ export class Education implements AfterViewInit {
   image: 'https://images.unsplash.com/photo-1603354350317-6f7aaa5911c5?w=150&h=150&fit=crop',
   status: 'completed'
 },
+{
+  title: 'SQA Module 2nd Runner-up',
+  description: 'Completed an SQA module focused on manual and automated test case design, test planning, and automation framework implementation. Built and executed automation test suites as part of the module and achieved 2nd Runner-Up position for overall performance and practical implementation.',
+  date: '9-06-2026',
+  category: 'Zabefest',
+  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQZgX1G6lxZXU6FI63riJE6WwHzeX7jGeEeeIAkriN7QVH8SpAVS736eLK&s=10',
+  status: 'completed'
+},
+ {
+  title: 'Building with the Claude API',
+  description: 'Currently pursuing a certification focused on building applications with the Claude API, covering core LLM concepts, prompt engineering, API integration, and real-world AI application development.',
+  date: '18-06-2026',
+  category: 'Anthropic',
+  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-s5UVPuNYcZQ9e7sOF0HXsfgZttAZg0bqjgmNkY28DNwnX0pP5tgOA6E&s=10',
+  status: 'upcoming'
+},
   {
   title: 'Certificate of Introduction to AI',
   description: 'Completed an introductory certification covering core artificial intelligence concepts, machine learning basics, and real-world AI applications.',
