@@ -63,7 +63,7 @@ export class Experience {
   iconColor: 'text-purple-400',
   iconBg: 'bg-purple-500/10',
   status: 'Ongoing',
-  tags: ['Python', 'React', 'AI'],
+  tags: ['Python', 'React', 'AI','WebScrappers','Chatbots'],
   colSpan: 2,
 }
    

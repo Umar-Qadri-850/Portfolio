@@ -179,8 +179,10 @@ export class Home implements AfterViewInit, OnDestroy {
       ctx.clearRect(0, 0, W, H);
       frame++;
 
-      const globalRotY = frame * 0.008;
-      const globalRotX = Math.sin(frame * 0.003) * 0.4;
+    // const globalRotY = frame * 0.008;
+      const globalRotX = Math.sin(frame * 0.003) * 0.2;
+     const globalRotY =1.35;
+// const globalRotX = Math.sin(frame * 0.003) * 0.2;
 
       const ambGlow = ctx.createRadialGradient(cx, cy, 5, cx, cy, 110);
       ambGlow.addColorStop(0, 'rgba(255,140,0,0.22)');
