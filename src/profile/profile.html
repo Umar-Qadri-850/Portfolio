@@ -24,7 +24,49 @@
     z-index: 0;
     pointer-events: none;
   "></app-entropy>
+<a
+  href="assets\Full-Stack-CV.pdf"
+  download
+  style="
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    z-index: 20;
+    padding: 10px 18px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #e5e5e5;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 0 0 rgba(255,255,255,0);
+    transition: all 0.3s ease;
+  "
+  onmouseover="
+    this.style.background='rgba(255,255,255,0.14)';
+    this.style.boxShadow='0 0 24px rgba(255,255,255,0.25)';
+  "
+  onmouseout="
+    this.style.background='rgba(255,255,255,0.08)';
+    this.style.boxShadow='0 0 0 rgba(255,255,255,0)';
+  "
+>
+  <!-- Icon -->
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+    <path d="M12 3v12" stroke="#e5e5e5" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M7 10l5 5 5-5" stroke="#e5e5e5" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="4" y="18" width="16" height="3" rx="1.5" stroke="#e5e5e5" stroke-width="1.5"/>
+  </svg>
 
+  Download Resume
+</a>
   <!-- SVG Spotlight beam -->
   <svg
     style="
