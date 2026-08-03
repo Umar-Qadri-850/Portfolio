@@ -79,7 +79,36 @@ export class Skills implements AfterViewInit, OnDestroy {
       level: 'Intermediate',
       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
       color: 'from-yellow-400 to-green-400'
-    }
+    },
+    {
+      id: 9,
+      title: 'C#',
+      level: 'Intermediate',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+      color: 'from-yellow-400 to-green-400'
+    },
+    {
+      id: 10,
+      title: 'Jira',
+      level: 'Intermediate',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg',
+      color: 'from-yellow-400 to-green-400'
+    },
+    {
+  id: 11,
+  title: 'Postman',
+  level: 'Intermediate',
+  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg',
+  
+  color: 'from-yellow-400 to-green-400'
+},
+  {
+    id: 12,
+    title: 'Node.js',
+    level: 'Intermediate',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+    color: 'from-green-500 to-emerald-600'
+  },
   ];
 
   activeId: number | null = null;
