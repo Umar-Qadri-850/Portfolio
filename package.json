@@ -26,6 +26,7 @@
     "@angular/forms": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
+    "@fortawesome/fontawesome-free": "^7.3.1",
     "@splinetool/viewer": "^1.12.92",
     "class-variance-authority": "^0.7.1",
     "d3": "^7.9.0",

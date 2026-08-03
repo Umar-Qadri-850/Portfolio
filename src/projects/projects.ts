@@ -64,6 +64,7 @@ export class Projects {
   description: 'Real-time TikTok data scraper that extracts reels and profiles based on user-defined keywords.',
   link: 'https://github.com/Umar-Qadri-850/TikTok-Scrapper',
 },
+
        {
       icon: 'fa-brands fa-atlassian',
       title: 'Vibe Todo Automation',
